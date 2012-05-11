@@ -3975,8 +3975,8 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <attribute name="VALUE" x="186.309" y="38.1" size="1.27" layer="96"/>
 </instance>
 <instance part="LED1" gate="G$1" x="60.96" y="127" smashed="yes" rot="R180">
-<attribute name="NAME" x="50.8" y="140.208" size="1.27" layer="95"/>
-<attribute name="VALUE" x="50.8" y="142.24" size="1.27" layer="96"/>
+<attribute name="NAME" x="50.8" y="141.986" size="1.27" layer="95"/>
+<attribute name="VALUE" x="50.8" y="140.208" size="1.27" layer="96"/>
 </instance>
 <instance part="R2" gate="C" x="76.2" y="119.38" smashed="yes" rot="MR0">
 <attribute name="NAME" x="71.12" y="121.92" size="1.27" layer="95"/>
