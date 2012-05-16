@@ -69,16 +69,21 @@
 <layer number="109" name="fp9" color="7" fill="1" visible="no" active="yes"/>
 <layer number="110" name="fp0" color="7" fill="1" visible="no" active="yes"/>
 <layer number="111" name="LPC17xx" color="7" fill="1" visible="no" active="yes"/>
+<layer number="112" name="tSilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="116" name="Patch_BOT" color="9" fill="4" visible="yes" active="yes"/>
 <layer number="121" name="_tsilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="122" name="_bsilk" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="123" name="tTestmark" color="7" fill="1" visible="no" active="yes"/>
 <layer number="124" name="bTestmark" color="7" fill="1" visible="no" active="yes"/>
 <layer number="125" name="_tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="126" name="_bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="127" name="_tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="128" name="_bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="131" name="tAdjust" color="7" fill="1" visible="no" active="yes"/>
 <layer number="132" name="bAdjust" color="7" fill="1" visible="no" active="yes"/>
 <layer number="144" name="Drill_legend" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="151" name="HeatSink" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="152" name="_bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="199" name="Contour" color="7" fill="1" visible="no" active="yes"/>
 <layer number="200" name="200bmp" color="1" fill="10" visible="no" active="no"/>
 <layer number="201" name="201bmp" color="2" fill="1" visible="no" active="no"/>
@@ -108,6 +113,8 @@
 <layer number="231" name="Eagle3D_PG1" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="232" name="Eagle3D_PG2" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="233" name="Eagle3D_PG3" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="248" name="Housing" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="249" name="Edge" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="250" name="Descript" color="3" fill="1" visible="no" active="no"/>
 <layer number="251" name="SMDround" color="12" fill="11" visible="no" active="no"/>
 <layer number="254" name="cooling" color="7" fill="1" visible="yes" active="yes"/>
@@ -1090,6 +1097,21 @@ Standard 0603 ceramic capacitor, and 0.1" leaded capacitor.</description>
 <rectangle x1="-2.2286" y1="3.556" x2="-1.7714" y2="4.5466" layer="51"/>
 <rectangle x1="-3.0286" y1="3.556" x2="-2.5714" y2="4.5466" layer="51"/>
 </package>
+<package name="MINIMELF">
+<description>Mini-MELF diode.</description>
+<wire x1="1.3208" y1="0.7874" x2="-1.3208" y2="0.7874" width="0.1524" layer="51"/>
+<wire x1="1.3208" y1="-0.7874" x2="-1.3208" y2="-0.7874" width="0.1524" layer="51"/>
+<wire x1="0.5" y1="0.5" x2="-0.5" y2="0" width="0.2032" layer="21"/>
+<wire x1="-0.5" y1="0" x2="0.5" y2="-0.5" width="0.2032" layer="21"/>
+<wire x1="0.5" y1="-0.5" x2="0.5" y2="0.5" width="0.2032" layer="21"/>
+<smd name="K" x="-1.7" y="0" dx="1.4" dy="1.8" layer="1"/>
+<smd name="A" x="1.7" y="0" dx="1.4" dy="1.8" layer="1"/>
+<text x="-2.54" y="3.81" size="1.27" layer="25">&gt;NAME</text>
+<text x="-2.54" y="1.27" size="1.27" layer="27">&gt;VALUE</text>
+<rectangle x1="-1.8542" y1="-0.8636" x2="-1.2954" y2="0.8636" layer="51"/>
+<rectangle x1="1.2954" y1="-0.8636" x2="1.8542" y2="0.8636" layer="51"/>
+<rectangle x1="-0.635" y1="-0.7874" x2="-0.381" y2="0.7874" layer="21"/>
+</package>
 </packages>
 <symbols>
 <symbol name="GND">
@@ -1208,8 +1230,7 @@ Standard 0603 ceramic capacitor, and 0.1" leaded capacitor.</description>
 <text x="0.635" y="1.905" size="1.524" layer="95">OUT</text>
 <pin name="IN" x="-7.62" y="2.54" visible="off" length="short" direction="in"/>
 <pin name="GND" x="0" y="-5.08" visible="off" length="short" direction="in" rot="R90"/>
-<pin name="OUT" x="7.62" y="2.54" visible="off" length="short" direction="out" rot="R180"/>
-<pin name="OUT@1" x="7.62" y="2.54" visible="off" length="short" direction="out" rot="R180"/>
+<pin name="OUT" x="7.62" y="2.54" visible="off" length="short" direction="pwr" rot="R180"/>
 </symbol>
 <symbol name="JUMPER-SPDT">
 <wire x1="2.54" y1="-2.54" x2="2.54" y2="-1.27" width="0.1524" layer="94"/>
@@ -1372,6 +1393,15 @@ Standard 0603 ceramic capacitor, and 0.1" leaded capacitor.</description>
 <technology name=""/>
 </technologies>
 </device>
+<device name="MINIMELF" package="MINIMELF">
+<connects>
+<connect gate="G$1" pin="A" pad="A"/>
+<connect gate="G$1" pin="K" pad="K"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
 </devices>
 </deviceset>
 <deviceset name="PTC" prefix="F">
@@ -1438,6 +1468,8 @@ Standard 0603 ceramic capacitor, and 0.1" leaded capacitor.</description>
 </devices>
 </deviceset>
 <deviceset name="LD1117-FIXED" prefix="IC">
+<description>Fixed-voltage LD1117 series LDOs in SOT-223 package.
+Note that the ground pin is labelled as ground, not as adj, because it's not the adjustable-voltage part.</description>
 <gates>
 <gate name="G$1" symbol="LD1117-FIXED" x="0" y="0"/>
 </gates>
@@ -1446,8 +1478,7 @@ Standard 0603 ceramic capacitor, and 0.1" leaded capacitor.</description>
 <connects>
 <connect gate="G$1" pin="GND" pad="1"/>
 <connect gate="G$1" pin="IN" pad="3"/>
-<connect gate="G$1" pin="OUT" pad="2"/>
-<connect gate="G$1" pin="OUT@1" pad="4"/>
+<connect gate="G$1" pin="OUT" pad="2 4"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -3811,15 +3842,14 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="C1" library="freetronics-master-v1" deviceset="CAP" device="0603" value="100nF"/>
 <part name="J1" library="freetronics-luke" deviceset="JUMPER_PTH" device="" value="Program"/>
 <part name="J3" library="freetronics-luke" deviceset="USB-FT" device="" value="USB"/>
-<part name="ZD1" library="freetronics-luke" deviceset="ZENER" device="" value="3V6"/>
-<part name="ZD2" library="freetronics-luke" deviceset="ZENER" device="" value="3V6"/>
+<part name="ZD1" library="freetronics-luke" deviceset="ZENER" device="MINIMELF" value="3V6"/>
+<part name="ZD2" library="freetronics-luke" deviceset="ZENER" device="MINIMELF" value="3V6"/>
 <part name="R3" library="freetronics-master-v1" deviceset="RESISTOR" device="0603" value="2k2"/>
 <part name="R4" library="freetronics-master-v1" deviceset="RESISTOR" device="0603" value="68R"/>
 <part name="R5" library="freetronics-master-v1" deviceset="RESISTOR" device="0603" value="68R"/>
 <part name="F1" library="freetronics-luke" deviceset="PTC" device="" value="500mA PTC"/>
 <part name="J2" library="freetronics-luke" deviceset="JUMPER_PTH" device="" value="Slow Clock"/>
 <part name="J4" library="freetronics-luke" deviceset="HEADER_2X3" device="" value="ISP Target"/>
-<part name="IC2" library="freetronics-luke" deviceset="LD1117-FIXED" device="" value="LD111733"/>
 <part name="U$26" library="freetronics-luke" deviceset="GND" device=""/>
 <part name="U$27" library="freetronics-luke" deviceset="+5V" device=""/>
 <part name="U$28" library="freetronics-luke" deviceset="+3.3V" device=""/>
@@ -3848,6 +3878,9 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <part name="U$3" library="freetronics-luke" deviceset="GND" device=""/>
 <part name="C6" library="freetronics-master-v1" deviceset="CAP" device="0603" value="100nF"/>
 <part name="IC3" library="freetronics-luke" deviceset="ATMEGA168" device="" value="ATMEGA8"/>
+<part name="C7" library="freetronics-jon" deviceset="C-EU" device="C0805" value="10uF"/>
+<part name="U$17" library="freetronics-luke" deviceset="GND" device=""/>
+<part name="IC1" library="freetronics-luke" deviceset="LD1117-FIXED" device="" value="LD111733"/>
 </parts>
 <sheets>
 <sheet>
@@ -3863,12 +3896,12 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <frame x1="144.78" y1="5.08" x2="243.84" y2="17.78" columns="0" rows="0" layer="94" border-left="no" border-top="no" border-right="no" border-bottom="no"/>
 <frame x1="144.78" y1="5.08" x2="165.862" y2="10.16" columns="8" rows="5" layer="94"/>
 <frame x1="210.82" y1="5.08" x2="243.84" y2="10.16" columns="8" rows="5" layer="94"/>
-<text x="38.1" y="38.1" size="1.27" layer="98">ZD1, ZD2: 3.6V 200mW Zener, SOD-323 packages, eg. MM3Z3V6T1G</text>
+<text x="38.1" y="38.1" size="1.27" layer="98">ZD1, ZD2: 3.6V 500mW Zener, glass MINIMELF packages, eg. BZV55C3V6</text>
 <text x="58.42" y="144.78" size="1.27" layer="98">Small SMD RGB.</text>
 <text x="58.42" y="142.24" size="1.27" layer="98">Same as LeoStick.</text>
-<text x="200.66" y="48.26" size="1.27" layer="98">10V</text>
-<text x="193.04" y="45.72" size="1.27" layer="98">0805 ceramic</text>
-<text x="160.02" y="43.18" size="1.27" layer="98">0603</text>
+<text x="167.64" y="43.18" size="1.27" layer="98">10V</text>
+<text x="167.64" y="40.64" size="1.27" layer="98">0805 ceramic</text>
+<text x="177.8" y="43.18" size="1.27" layer="98">0603</text>
 <text x="58.42" y="149.86" size="1.27" layer="98">R2: 1k SMD quad resistor pack</text>
 <text x="96.52" y="144.78" size="1.27" layer="98">Can use any AVR device in the ATmega8/48/88/168 series</text>
 <text x="104.14" y="142.24" size="1.27" layer="98">depending on cost and stock availability.</text>
@@ -3879,15 +3912,17 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <text x="182.88" y="91.44" size="1.27" layer="98">0603</text>
 <text x="170.18" y="119.38" size="1.27" layer="98">0603</text>
 <text x="157.48" y="139.7" size="1.27" layer="98">0603</text>
-<text x="73.66" y="71.12" size="1.27" layer="98">SOD-323</text>
+<text x="73.66" y="71.12" size="1.27" layer="98">MINI MELF</text>
 <text x="58.42" y="45.72" size="1.27" layer="98">2x3 0.1" through-hole pin header</text>
-<text x="172.72" y="63.5" size="1.27" layer="98">SOT-223</text>
+<text x="190.5" y="63.5" size="1.27" layer="98">SOT-223</text>
 <text x="172.72" y="91.44" size="1.27" layer="98">0603</text>
 <text x="182.88" y="104.14" size="1.27" layer="98">HC49US through-hole</text>
 <text x="99.06" y="149.86" size="1.27" layer="98">J1, J2: 2-pin 0.1" through-hole pin headers</text>
 <text x="116.84" y="134.62" size="1.27" layer="98">32-pin TQFP package.</text>
 <text x="116.84" y="58.42" size="1.27" layer="98">Jumper on 3 x 0.1" through-hole</text>
 <text x="116.84" y="55.88" size="1.27" layer="98">header pins.</text>
+<text x="210.82" y="43.18" size="1.27" layer="98">10V</text>
+<text x="210.82" y="40.64" size="1.27" layer="98">0805 ceramic</text>
 </plain>
 <instances>
 <instance part="R1" gate="G$1" x="165.1" y="137.16" smashed="yes" rot="MR90">
@@ -3951,32 +3986,28 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <attribute name="NAME" x="55.88" y="66.04" size="1.27" layer="95"/>
 <attribute name="VALUE" x="55.88" y="64.008" size="1.27" layer="96"/>
 </instance>
-<instance part="IC2" gate="G$1" x="177.8" y="53.34" smashed="yes">
-<attribute name="NAME" x="172.72" y="60.96" size="1.27" layer="95"/>
-<attribute name="VALUE" x="172.72" y="59.182" size="1.27" layer="96"/>
+<instance part="U$26" gate="G$1" x="195.58" y="40.64" smashed="yes">
+<attribute name="VALUE" x="193.929" y="38.1" size="1.27" layer="96"/>
 </instance>
-<instance part="U$26" gate="G$1" x="177.8" y="40.64" smashed="yes">
-<attribute name="VALUE" x="176.149" y="38.1" size="1.27" layer="96"/>
+<instance part="U$27" gate="G$1" x="157.48" y="55.88" smashed="yes" rot="R90">
+<attribute name="VALUE" x="152.4" y="55.88" size="1.27" layer="96"/>
 </instance>
-<instance part="U$27" gate="G$1" x="162.56" y="55.88" smashed="yes" rot="R90">
-<attribute name="VALUE" x="157.48" y="55.88" size="1.27" layer="96"/>
+<instance part="U$28" gate="G$1" x="210.82" y="55.88" smashed="yes" rot="R270">
+<attribute name="VALUE" x="213.36" y="55.88" size="1.27" layer="96"/>
 </instance>
-<instance part="U$28" gate="G$1" x="193.04" y="55.88" smashed="yes" rot="R270">
-<attribute name="VALUE" x="195.58" y="55.88" size="1.27" layer="96"/>
+<instance part="U$30" gate="G$1" x="185.42" y="40.64" smashed="yes">
+<attribute name="VALUE" x="183.769" y="38.1" size="1.27" layer="96"/>
 </instance>
-<instance part="U$30" gate="G$1" x="167.64" y="40.64" smashed="yes">
-<attribute name="VALUE" x="165.989" y="38.1" size="1.27" layer="96"/>
+<instance part="C5" gate="G$1" x="205.74" y="50.8" smashed="yes">
+<attribute name="NAME" x="210.82" y="48.26" size="1.4224" layer="95"/>
+<attribute name="VALUE" x="210.82" y="45.72" size="1.4224" layer="96"/>
 </instance>
-<instance part="C5" gate="G$1" x="187.96" y="50.8" smashed="yes">
-<attribute name="NAME" x="193.04" y="50.8" size="1.4224" layer="95"/>
-<attribute name="VALUE" x="193.04" y="48.26" size="1.4224" layer="96"/>
-</instance>
-<instance part="U$31" gate="G$1" x="187.96" y="40.64" smashed="yes">
-<attribute name="VALUE" x="186.309" y="38.1" size="1.27" layer="96"/>
+<instance part="U$31" gate="G$1" x="205.74" y="40.64" smashed="yes">
+<attribute name="VALUE" x="204.089" y="38.1" size="1.27" layer="96"/>
 </instance>
 <instance part="LED1" gate="G$1" x="60.96" y="127" smashed="yes" rot="R180">
-<attribute name="NAME" x="50.8" y="141.986" size="1.27" layer="95"/>
-<attribute name="VALUE" x="50.8" y="140.208" size="1.27" layer="96"/>
+<attribute name="NAME" x="50.8" y="140.208" size="1.27" layer="95"/>
+<attribute name="VALUE" x="50.8" y="142.24" size="1.27" layer="96"/>
 </instance>
 <instance part="R2" gate="C" x="76.2" y="119.38" smashed="yes" rot="MR0">
 <attribute name="NAME" x="71.12" y="121.92" size="1.27" layer="95"/>
@@ -4045,13 +4076,24 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <instance part="U$3" gate="G$1" x="83.82" y="114.3" smashed="yes">
 <attribute name="VALUE" x="82.169" y="111.76" size="1.27" layer="96"/>
 </instance>
-<instance part="C6" gate="G$1" x="167.64" y="48.26" smashed="yes" rot="MR0">
-<attribute name="NAME" x="160.02" y="48.26" size="1.27" layer="95"/>
-<attribute name="VALUE" x="160.02" y="45.72" size="1.27" layer="96"/>
+<instance part="C6" gate="G$1" x="185.42" y="48.26" smashed="yes" rot="MR0">
+<attribute name="NAME" x="177.8" y="48.26" size="1.27" layer="95"/>
+<attribute name="VALUE" x="177.8" y="45.72" size="1.27" layer="96"/>
 </instance>
 <instance part="IC3" gate="G$1" x="124.46" y="96.52" smashed="yes" rot="MR0">
 <attribute name="NAME" x="106.68" y="137.16" size="1.27" layer="95"/>
 <attribute name="VALUE" x="106.68" y="134.62" size="1.27" layer="96"/>
+</instance>
+<instance part="C7" gate="G$1" x="162.56" y="50.8" smashed="yes">
+<attribute name="NAME" x="167.64" y="48.26" size="1.4224" layer="95"/>
+<attribute name="VALUE" x="167.64" y="45.72" size="1.4224" layer="96"/>
+</instance>
+<instance part="U$17" gate="G$1" x="162.56" y="40.64" smashed="yes">
+<attribute name="VALUE" x="160.909" y="38.1" size="1.27" layer="96"/>
+</instance>
+<instance part="IC1" gate="G$1" x="195.58" y="53.34" smashed="yes">
+<attribute name="NAME" x="190.5" y="60.96" size="1.27" layer="95"/>
+<attribute name="VALUE" x="190.5" y="58.928" size="1.27" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -4059,17 +4101,17 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <nets>
 <net name="GND" class="0">
 <segment>
-<wire x1="177.8" y1="43.18" x2="177.8" y2="48.26" width="0.1524" layer="91"/>
-<pinref part="IC2" gate="G$1" pin="GND"/>
+<wire x1="195.58" y1="43.18" x2="195.58" y2="48.26" width="0.1524" layer="91"/>
 <pinref part="U$26" gate="G$1" pin="GND"/>
+<pinref part="IC1" gate="G$1" pin="GND"/>
 </segment>
 <segment>
-<wire x1="167.64" y1="45.72" x2="167.64" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="45.72" x2="185.42" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="U$30" gate="G$1" pin="GND"/>
 <pinref part="C6" gate="G$1" pin="2"/>
 </segment>
 <segment>
-<wire x1="187.96" y1="45.72" x2="187.96" y2="43.18" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="45.72" x2="205.74" y2="43.18" width="0.1524" layer="91"/>
 <pinref part="C5" gate="G$1" pin="2"/>
 <pinref part="U$31" gate="G$1" pin="GND"/>
 </segment>
@@ -4159,16 +4201,25 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 <wire x1="83.82" y1="116.84" x2="83.82" y2="119.38" width="0.1524" layer="91"/>
 <junction x="83.82" y="119.38"/>
 </segment>
+<segment>
+<pinref part="U$17" gate="G$1" pin="GND"/>
+<pinref part="C7" gate="G$1" pin="2"/>
+<wire x1="162.56" y1="43.18" x2="162.56" y2="45.72" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+5V" class="0">
 <segment>
-<wire x1="165.1" y1="55.88" x2="167.64" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="55.88" x2="170.18" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="167.64" y1="53.34" x2="167.64" y2="55.88" width="0.1524" layer="91"/>
-<junction x="167.64" y="55.88"/>
+<wire x1="160.02" y1="55.88" x2="162.56" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="162.56" y1="55.88" x2="185.42" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="55.88" x2="187.96" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="185.42" y1="53.34" x2="185.42" y2="55.88" width="0.1524" layer="91"/>
+<junction x="185.42" y="55.88"/>
 <pinref part="U$27" gate="G$1" pin="+5V"/>
-<pinref part="IC2" gate="G$1" pin="IN"/>
 <pinref part="C6" gate="G$1" pin="1"/>
+<pinref part="C7" gate="G$1" pin="1"/>
+<wire x1="162.56" y1="53.34" x2="162.56" y2="55.88" width="0.1524" layer="91"/>
+<junction x="162.56" y="55.88"/>
+<pinref part="IC1" gate="G$1" pin="IN"/>
 </segment>
 <segment>
 <pinref part="F1" gate="G$1" pin="P$2"/>
@@ -4414,15 +4465,13 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </net>
 <net name="+3V3" class="0">
 <segment>
-<wire x1="187.96" y1="55.88" x2="185.42" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="190.5" y1="55.88" x2="187.96" y2="55.88" width="0.1524" layer="91"/>
-<wire x1="187.96" y1="53.34" x2="187.96" y2="55.88" width="0.1524" layer="91"/>
-<junction x="185.42" y="55.88"/>
-<junction x="187.96" y="55.88"/>
-<pinref part="IC2" gate="G$1" pin="OUT"/>
-<pinref part="IC2" gate="G$1" pin="OUT@1"/>
+<wire x1="208.28" y1="55.88" x2="205.74" y2="55.88" width="0.1524" layer="91"/>
+<wire x1="205.74" y1="53.34" x2="205.74" y2="55.88" width="0.1524" layer="91"/>
 <pinref part="U$28" gate="G$1" pin="+3V3"/>
 <pinref part="C5" gate="G$1" pin="1"/>
+<wire x1="203.2" y1="55.88" x2="205.74" y2="55.88" width="0.1524" layer="91"/>
+<junction x="205.74" y="55.88"/>
+<pinref part="IC1" gate="G$1" pin="OUT"/>
 </segment>
 <segment>
 <wire x1="106.68" y1="50.8" x2="106.68" y2="48.26" width="0.1524" layer="91"/>
@@ -4464,12 +4513,7 @@ Source: http://www.vishay.com/docs/10129/hpc0201a.pdf</description>
 </sheet>
 </sheets>
 <errors>
-<approved hash="206,1,185.42,55.88,+3V3,,,,,"/>
-<approved hash="206,1,185.42,55.88,+3V3,,,,,"/>
-<approved hash="208,1,185.42,55.88,+3V3,out,,,,"/>
-<approved hash="208,1,185.42,55.88,+3V3,out,,,,"/>
-<approved hash="208,1,190.5,55.88,+3V3,sup,,,,"/>
-<approved hash="208,1,104.14,48.26,+3V3,sup,,,,"/>
+<approved hash="104,1,203.2,55.88,IC1,OUT,+3V3,,,"/>
 </errors>
 </schematic>
 </drawing>
